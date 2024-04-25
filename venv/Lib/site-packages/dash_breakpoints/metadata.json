@@ -1,0 +1,105 @@
+{
+  "src/ts/components/WindowBreakpoints.tsx": {
+    "displayName": "WindowBreakpoints",
+    "description": "Component description",
+    "props": {
+      "widthBreakpointThresholdsPx": {
+        "description": "Window widths on which to separate breakpoints, array of length N",
+        "required": false,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "number",
+            "raw": "number"
+          },
+          "raw": "number[]"
+        }
+      },
+      "widthBreakpointNames": {
+        "description": "Name of each width breakpoint, array of length N + 1",
+        "required": false,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string",
+            "raw": "string"
+          },
+          "raw": "string[]"
+        }
+      },
+      "heightBreakpointThresholdsPx": {
+        "description": "Window heights on which to separate breakpoints, array of length N",
+        "required": false,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "number",
+            "raw": "number"
+          },
+          "raw": "number[]"
+        }
+      },
+      "heightBreakpointNames": {
+        "description": "Name of each height breakpoint, array of length N + 1",
+        "required": false,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string",
+            "raw": "string"
+          },
+          "raw": "string[]"
+        }
+      },
+      "width": {
+        "description": "Current width, NOTE: avoid using in a server callback",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "height": {
+        "description": "Current height, NOTE: avoid using in a server callback",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "widthBreakpoint": {
+        "description": "Current width breakpoint",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "heightBreakpoint": {
+        "description": "Current height breakpoint",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
+  }
+}

@@ -1,0 +1,86 @@
+
+:root {
+    --fontfamily: 'Lato', monospace;
+    --bodycolor: #DDD1C7;
+    --borderColor: #ff0000;
+    --bodybackgroundcolor: #1a212b;
+    --kruiskleur: #00546C;
+    --l1value-0: pink;
+    --l2value-0: red;
+    --l2value-1: purple;
+    --l2value-2: green;
+    --l2value-3: orange;
+
+    --projectorange:#C850C0;
+    --dropdownvalue:#AA67A6;
+
+
+    --graphboven: #8EC5FC;
+    --graphonder: #E0C3FC;
+
+    --cardboven: #E0C3FC;
+    --cardonder: #8EC5FC;
+
+    --topcolor: #E0C3FC;
+    --middlecolor1: #c6a6e4;
+    --middlecolor2: #86b4e2;
+    --bottomcolor: #8EC5FC;
+
+    --tabselecttextcolor: #b37400;
+    --tabdeselecttextcolor: #fff;
+    --tabdeselect: #141e30;
+    --tabhover: #E0C3FC;
+
+    --dropdownmenu: #243b55;
+    --dropdownmenuoptions: #b37400;
+
+    --cardselect: #6610f2;
+    --cardhover: #b37400;
+    --graphtypemove: #6610f2;
+    --selectedcolor0: #6610f2;
+    --blue: #4582ec;
+	--indigo: #6610f2;
+	--purple: #6f42c1;
+	--pink: #e83e8c;
+	--red: #d9534f;
+	--orange: #fd7e14;
+	--yellow: #f0ad4e;
+	--green: #02b875;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--white: #fff;
+	--gray: #868e96;
+	--gray-dark: #343a40;
+	--primary: #4582ec;
+	--secondary: #adb5bd;
+	--success: #02b875;
+	--info: #A1A7AD;
+	--warning: #f0ad4e;
+	--danger: #d9534f;
+	--light: #f8f9fa;
+	--dark: #343a40;
+	--mellowyellow: #d8d6c8;
+	--coolblue: #1b568c;
+	--breakpoint-xs: 0;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+	--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --body-color: #e7e7e7;
+    --sidebar-color: #b37400;
+    --primary-color: #f2730c;
+    --primary-color-light: #44bbee;
+    --toggle-color: #ddd;
+    --text-color-side: purple;
+    --gradientbasic:#D9AFD9;
+    --gradientcolor: linear-gradient(196deg, #D9AFD9 0%, #97D9E1 50%, #e3be6a 100%);
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+
+
+}

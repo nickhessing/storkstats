@@ -1,0 +1,64 @@
+version: '3.4'
+
+services:
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    # ports:
+    #   - "6379:6379"
+    environment:
+      REDIS_PASSWORD: secret
+  redis-insight:
+    image: redis/redisinsight:latest
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis-insight:/data
+
+
+    # ports:
+    #   - 6379:6379
+    # volumes:
+    #   - redis-data:/data
+
+  # redis_insight:
+  #   image: redislabs/redisinsight:latest
+  #   container_name: redis_insight
+  #   # restart: always
+  #   ports:
+  #     - 8001:8001
+  #   volumes:
+  #     - redis_insight_volume_data:/db
+
+  cookpiapp:
+    image: cookpiapp
+    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # volumes:
+    #   - app-data:/data
+    ports:
+      - 8050:8050
+    depends_on:
+      - redis
+
+
+    # #environment:
+    # #  - REDIS_HOST=cookpi.redis.cache.windows.net
+    # #  - REDIS_PORT=6380
+    # #  - REDIS_SSL=True
+    # #  - REDIS_PASSWORD=vDzc42AZlVCiHn58bddYfUc5RLmvUkCKmAzCaJdPs8Q=
+    # environment:
+    #   - REDIS_HOST=localhost
+    #   - REDIS_PORT=6379
+    # healthcheck:
+    #   test: ["CMD", "redis-cli", "ping"]
+    #   interval: 1s
+    #   timeout: 2s
+    #   retries: 10
+
+volumes:
+  redis-insight:

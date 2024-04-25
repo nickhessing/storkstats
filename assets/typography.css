@@ -1,0 +1,665 @@
+@import "./constants.css";
+
+@font-face {
+font-family: 'Lato';
+src: url('fonts/Lato-Bold.ttf') format('truetype');
+}
+
+html {
+	font-family: var(--fontfamily);
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: var(--bottomcolor);
+	color: var(--bodycolor);
+
+}
+
+body:read-only {
+	margin: 0;
+	font-family: var(--fontfamily);
+	font-size: 1.063rem;
+	font-weight: 400;
+	line-height: 1.2;
+	color: var(--bodycolor);
+	text-align: left;
+	resize: none;
+	background: linear-gradient(var(--topcolor), var(--middlecolor1),var(--middlecolor2), var(--bottomcolor));
+  transition: var(--tran-05);
+  contenteditable: False;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+  contenteditable: False;
+}
+
+.dash-graph text {
+    font-family: var(--fontfamily)! important;
+}
+
+.material-icons {
+  z-index: 1;
+  text-align: left;
+}
+@media (min-width: 276px) {
+
+  .h1 {
+     font-family: var(--fontfamily);
+     font-size: 49px;
+     height: 105px;
+     font-weight: bold;
+     line-height:.8;
+     text-align: center;
+     width: 100%;
+     display: inline-block;
+     cursor: inherit;
+     color: var(--bodycolor);
+     padding: 0px;
+     margin-bottom : 0px;
+     color: #a8a8a8;
+     contenteditable: False;
+     resize: none;
+      }
+  
+  .h2 {
+    font-family: var(--fontfamily);
+    font-size: 36px;
+    font-weight: normal;
+    line-height:.8;
+    display: inline-block;
+    margin-bottom : 0px;
+    height: 35px;
+    width: 100%;
+    cursor: inherit;
+    color: #a8a8a8;
+    color: var(--bodycolor);
+    text-align: center;
+    contenteditable: False;
+    resize: none;
+  }
+  
+  .h3 {
+    font-family: var(--fontfamily);
+    font-size: 1.5 rem;
+    height: 73px;
+    width: 100%;
+    margin-bottom : 0px;
+    cursor: inherit;
+    font-weight: normal;
+    display: inline-block;
+    line-height:.8;
+    color: var(--bodycolor);
+    text-align: center;
+    margin-top : 0px;
+    contenteditable: False;
+    resize: none;
+  }
+  
+  
+  .h4 {
+    font-family: var(--fontfamily);
+    height: 73px;
+    width: 100%;
+    font-weight: normal;
+    display: inline-block;
+    cursor: inherit;
+    color: var(--bodycolor);
+    text-align: center;
+    margin-bottom : 0px;
+    font-size: 70px;
+    margin-top : 0px;
+    line-height:.8;
+    contenteditable: False;
+    resize: none;
+  }
+  
+  .h5 {
+      width: 100%;
+      font-size: 40px;
+      text-align: center;
+      color: var(--bodycolor);
+      line-height:.8;
+      cursor: inherit;
+      margin-bottom : 0px;
+      contenteditable: False;
+      resize: none;
+  }
+  .h6 {
+      width: 100%;
+      font-size: 20px;
+      color: var(--bodycolor);
+      cursor: inherit;
+      text-align: center;
+      contenteditable: False;
+      margin-bottom : 0px;
+      line-height:.8;
+      resize: none;
+  }
+  
+  .h7 {
+      width: 100%;
+      font-size: 10px;
+      color: var(--bodycolor);
+      cursor: inherit;
+      margin-bottom : 0px;
+      line-height:.8;
+      text-align: center;
+      contenteditable: False;
+      resize: none;
+  }
+  
+  
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  
+  .textarea {
+    background: transparent;
+    color: #212229;
+    border: 0px;
+    resize: none;
+    margin: 0px;
+    font-family: var(--fontfamily);
+    contenteditable: False;
+  
+  }
+  .js-plotly-plot .plotly, .js-plotly-plot .plotly div{
+  font-family: var(--fontfamily);
+  }
+  
+  }
+
+@media (min-width: 576px) {
+
+.h1 {
+   font-family: var(--fontfamily);
+   font-size: 49px;
+   height: 105px;
+   font-weight: bold;
+   line-height:.8;
+   text-align: center;
+   width: 100%;
+   display: inline-block;
+   cursor: inherit;
+   color: var(--bodycolor);
+   padding: 0px;
+   margin-bottom : 0px;
+   color: #a8a8a8;
+   contenteditable: False;
+   resize: none;
+    }
+
+.h2 {
+  font-family: var(--fontfamily);
+  font-size: 36px;
+  cursor: inherit;
+  font-weight: normal;
+  line-height:.8;
+  display: inline-block;
+  margin-bottom : 0px;
+  height: 35px;
+  width: 100%;
+  color: #a8a8a8;
+  color: var(--bodycolor);
+  text-align: center;
+  contenteditable: False;
+  resize: none;
+}
+
+.h3 {
+  font-family: var(--fontfamily);
+  font-size: 1.5 rem;
+  height: 73px;
+  width: 100%;
+  margin-bottom : 0px;
+  cursor: inherit;
+  font-weight: normal;
+  display: inline-block;
+  line-height:.8;
+  color: var(--bodycolor);
+  text-align: center;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+
+.h4 {
+  font-family: var(--fontfamily);
+  height: 73px;
+  width: 100%;
+  font-weight: normal;
+  display: inline-block;
+  color: var(--bodycolor);
+  text-align: center;
+  cursor: inherit;
+  margin-bottom : 0px;
+  font-size: 70px;
+  margin-top : 0px;
+  line-height:.8;
+  contenteditable: False;
+  resize: none;
+}
+
+.h5 {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    color: var(--bodycolor);
+    cursor: inherit;
+    line-height:.8;
+    margin-bottom : 0px;
+    contenteditable: False;
+    resize: none;
+}
+.h6 {
+    width: 100%;
+    font-size: 20px;
+    color: var(--bodycolor);
+    text-align: center;
+    contenteditable: False;
+    cursor: inherit;
+    margin-bottom : 0px;
+    line-height:.8;
+    resize: none;
+}
+
+.h7 {
+    width: 100%;
+    font-size: 10px;
+    color: var(--bodycolor);
+    margin-bottom : 0px;
+    line-height:.8;
+    cursor: inherit;
+    text-align: center;
+    contenteditable: False;
+    resize: none;
+}
+
+
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.textarea {
+  background: transparent;
+  color: #212229;
+  border: 0px;
+  resize: none;
+  margin: 0px;
+  font-family: var(--fontfamily);
+  contenteditable: False;
+
+}
+.js-plotly-plot .plotly, .js-plotly-plot .plotly div{
+font-family: var(--fontfamily);
+}
+
+}
+@media (min-width: 768px) {
+
+.h1 {
+   font-family: var(--fontfamily);
+   font-size: 29px;
+   height: 105px;
+   font-weight: bold;
+   line-height:.8;
+   cursor: inherit;
+   text-align: center;
+   color: var(--bodycolor);
+   width: 100%;
+   margin-bottom : 0px;
+   display: inline-block;
+   padding: 0px;
+   color: #a8a8a8;
+   contenteditable: False;
+   resize: none;
+    }
+
+.h2 {
+  font-family: var(--fontfamily);
+  font-size: 26px;
+  font-weight: normal;
+  line-height:.8;
+  margin-bottom : 0px;
+  display: inline-block;
+  height: 35px;
+  width: 100%;
+  color: var(--bodycolor);
+  cursor: inherit;
+  text-align: center;
+  contenteditable: False;
+  resize: none;
+}
+
+.h3 {
+  font-family: var(--fontfamily);
+  font-size: 1.5 rem;
+  height: 73px;
+  width: 100%;
+  font-weight: normal;
+  display: inline-block;
+  line-height:.8;
+  cursor: inherit;
+  color: var(--bodycolor);
+  text-align: center;
+  margin-bottom : 0px;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+
+.h4 {
+  font-family: var(--fontfamily);
+  height: 73px;
+  width: 100%;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom : 0px;
+  cursor: inherit;
+  line-height:.8;
+  color: var(--bodycolor);
+  text-align: center;
+  font-size: 70px;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+
+.h5 {
+  width: 100%;
+  font-size: 40px;
+  margin-bottom : 0px;
+  text-align: center;
+  line-height:.8;
+  color: var(--bodycolor);
+  contenteditable: False;
+  cursor: inherit;
+  resize: none;
+}
+.h6 {
+  width: 100%;
+  font-size: 20px;
+  color: var(--bodycolor);
+  cursor: inherit;
+  margin-bottom : 0px;
+  contenteditable: False;
+  text-align: center;
+  line-height:.8;
+  resize: none;
+}
+
+}
+.h7 {
+  width: 100%;
+  font-size: 10px;
+  color: var(--bodycolor);
+  contenteditable: False;
+  resize: none;
+  text-align: center;
+  line-height:.8;
+  cursor: inherit;
+  margin-bottom : 0px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+textarea {
+  background: transparent;
+  color: #212229;
+  border: 0px;
+  resize: none;
+  font-family: var(--fontfamily);
+  contenteditable: False;
+}
+.js-plotly-plot .plotly, .js-plotly-plot .plotly div{
+font-family: var(--fontfamily);
+}
+
+@media (min-width: 992px) {
+
+.h1 {
+   font-family: var(--fontfamily);
+   font-size: 29px;
+   height: 105px;
+   font-weight: bold;
+   margin-bottom : 0px;
+   line-height:.8;
+   cursor: inherit;
+   text-align: center;
+   width: 100%;
+   display: inline-block;
+   padding: 0px;
+   color: var(--bodycolor);
+   contenteditable: False;
+   resize: none;
+    }
+
+.h2 {
+  font-family: var(--fontfamily);
+  font-size: 26px;
+  font-weight: normal;
+  line-height:.8;
+  margin-bottom : 0px;
+  display: inline-block;
+  height: 35px;
+  cursor: inherit;
+  width: 100%;
+  color: var(--bodycolor);
+  text-align: center;
+  contenteditable: False;
+  resize: none;
+}
+
+.h3 {
+  font-family: var(--fontfamily);
+  font-size: 1.5 rem;
+  height: 73px;
+  width: 100%;
+  font-weight: normal;
+  cursor: inherit;
+  display: inline-block;
+  line-height:.8;
+  color: var(--bodycolor);
+  text-align: center;
+  margin-bottom : 0px;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+
+.h4 {
+  font-family: var(--fontfamily);
+  height: 73px;
+  width: 100%;
+  font-weight: normal;
+  display: inline-block;
+  line-height:.8;
+  margin-bottom : 0px;
+  cursor: inherit;
+  font-size: 70px;
+  color: var(--bodycolor);
+  text-align: center;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+
+.h5 {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  cursor: inherit;
+  color: var(--bodycolor);
+  contenteditable: False;
+  margin-bottom : 0px;
+  line-height:.8;
+  resize: none;
+}
+.h6 {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: var(--bodycolor);
+  cursor: inherit;
+  margin-bottom : 0px;
+  line-height:.8;
+  contenteditable: False;
+  resize: none;
+}
+
+}
+.h7 {
+  width: 100%;
+  font-size: 10px;
+  color: var(--bodycolor);
+  contenteditable: False;
+  margin-bottom : 0px;
+  cursor: inherit;
+  line-height:.8;
+  resize: none;
+  text-align: center;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+textarea {
+  background: transparent;
+  color: #212229;
+  border: 0px;
+  resize: none;
+  font-family: var(--fontfamily);
+  contenteditable: False;
+}
+.js-plotly-plot .plotly, .js-plotly-plot .plotly div{
+font-family: var(--fontfamily);
+resize: none;
+}
+
+
+@media (min-width: 1200px) {
+
+.h1 {
+   font-family: var(--fontfamily);
+   font-size: 29px;
+   height: 105px;
+   font-weight: bold;
+   margin-bottom : 0px;
+   line-height:.8;
+   text-align: center;
+   width: 100%;
+   display: inline-block;
+   cursor: inherit;
+   padding: 0px;
+   color: var(--bodycolor);
+   contenteditable: False;
+   resize: none;
+    }
+
+.h2 {
+  font-family: var(--fontfamily);
+  font-size: 26px;
+  cursor: inherit;
+  font-weight: normal;
+  display: inline-block;
+  height: 35px;
+  width: 100%;
+  line-height:.8;
+  margin-bottom : 0px;
+  color: var(--bodycolor);
+  text-align: center;
+  contenteditable: False;
+  resize: none;
+}
+
+.h3 {
+  font-family: var(--fontfamily);
+  font-size: 30px;
+  height: 73px;
+  margin-bottom : 0px;
+  width: 100%;
+  font-weight: normal;
+  cursor: inherit;
+  display: inline-block;
+  color: var(--bodycolor);
+  text-align: center;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+  line-height:.8;
+}
+
+
+.h4 {
+  font-family: var(--fontfamily);
+  height: 73px;
+  width: 100%;
+  cursor: inherit;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom : 0px;
+  text-align: center;
+  line-height:.8;
+  font-size: 70px;
+  margin-top : 0px;
+  contenteditable: False;
+  resize: none;
+}
+
+.h5 {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    cursor: inherit;
+    color: var(--bodycolor);
+    contenteditable: False;
+    line-height:.8;
+    resize: none;
+    margin-bottom : 0px;
+}
+
+.h6 {
+    width: 100%;
+    font-size: 20px;
+    cursor: inherit;
+    color: var(--bodycolor);
+    line-height:.8;
+    margin-bottom : 0px;
+    text-align: center;
+    contenteditable: False;
+    resize: none;
+}
+
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+textarea {
+  background: transparent;
+  color: #212229;
+  border: 0px;
+  resize: none;
+  font-family: var(--fontfamily);
+  contenteditable: False;
+}
+.js-plotly-plot .plotly, .js-plotly-plot .plotly div{
+font-family: var(--fontfamily);
+}
+}
