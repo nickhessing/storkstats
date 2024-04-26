@@ -45,7 +45,7 @@ from dash_extensions.enrich import (
     dcc,
     ServersideOutputTransform,
 )
-#import base64
+import base64
 # from flask_caching import Cache
 #..
 import redis
