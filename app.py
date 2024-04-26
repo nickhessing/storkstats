@@ -30,7 +30,6 @@ import os
 import pandas as pd
 import plotly.express as px
 import plotly.io as pio
-from dash_breakpoints import WindowBreakpoints
 import json
 from uuid import uuid4
 import polars as pl
