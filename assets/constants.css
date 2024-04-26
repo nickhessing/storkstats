@@ -4,17 +4,16 @@
     --bodycolor: rgba(247, 232, 183, 0.949);
     --borderColor: #ff0000;
     --bodybackgroundcolor: #1a212b;
-    --bulletcolor: rgb(247, 239, 213);
+    --bulletcolor: rgba(247, 232, 183, 0.949);
     --kruiskleur: #00546C;
     --l1value-0: pink;
     --l2value-0: red;
     --l2value-1: purple;
     --l2value-2: green;
     --l2value-3: orange;
+    --logogreen: #26b4a4;
 
-    --buttoncolor :  rgb(247, 239, 213);
-
-    --projectorange:rgb(247, 239, 213);
+    --projectorange:rgba(247, 232, 183, 0.949);
     --dropdownvalue:#222d40;
 
 
@@ -33,7 +32,7 @@
     --tabdeselecttextcolor: rgb(172, 171, 162);
     --tabdeselect: #1b2840;
     --tabhover: #26405e;
-    --hovershadow:  rgba(247, 232, 183, 0.949);
+    --hovershadow: #26b4a4;
     --rangeselector:#1a2a3d;
 
     --dropdownmenu: #243b55;
@@ -73,7 +72,7 @@
 	--breakpoint-xl: 1200px;
 	--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
+    
     --body-color: #e7e7e7;
     --sidebar-text-hover-color: #020b15;
     --sidebar-hover-color: #f3f6d0;
