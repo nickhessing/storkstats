@@ -51,6 +51,7 @@ import redis
 import dash_loading_spinners as dls
 import subprocess
 import numpy as np
+from dash_breakpoints import WindowBreakpoints
 from numerize import numerize
 
 np.seterr(divide="ignore", invalid="ignore")

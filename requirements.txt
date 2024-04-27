@@ -2,6 +2,7 @@ dash==2.11.1
 dash-bootstrap-components==1.4.2
 dash_daq==0.5.0
 dash_trich_components==1.0.0
+dash-breakpoints==0.1.0
 pandas==2.0.3
 numpy==1.25.1
 plotly==5.15.0
