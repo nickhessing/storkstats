@@ -367,7 +367,7 @@ KPIGroupdropdown = html.Div([
 mainlogo = html.Div(
     html.Img(
         src='data:image/png;base64,{}'.format(
-            base64.b64encode(open('assets/attributes/Images/storkstats.png', 'rb').read()).decode()
+            base64.b64encode(open('assets/Attributes/Images/storkstats.png', 'rb').read()).decode()
         ),
         id='TopImage'
     ),
@@ -2770,7 +2770,7 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
                         html.Div(
                             html.Img(
                                 src='data:image/png;base64,{}'.format(
-                                    base64.b64encode(open('assets/attributes/Images/storkstats.png', 'rb').read()).decode()
+                                    base64.b64encode(open('assets/Attributes/Images/storkstats.png', 'rb').read()).decode()
                                 ),
                                 id='TopImage',
                                 className = "icon"
@@ -3390,7 +3390,7 @@ def update_kpiagg(graphlevel0datasetje,GrainSelect,KPISelect,CumulativeSwitch,Pe
                     barmode='stack',
                     image = dict(
                         src='data:image/png;base64,{}'.format(
-                                    base64.b64encode(open('assets/attributes/Images/storkstats.png', 'rb').read()).decode()),
+                                    base64.b64encode(open('assets/Attributes/Images/storkstats.png', 'rb').read()).decode()),
                         xref="paper", yref="paper",
                         x=1, 
                         y=1.05,

@@ -19,3 +19,4 @@ polars==0.18.4
 dash[celery]==2.11.1
 Flask==2.2.5
 dash[diskcache]
+
