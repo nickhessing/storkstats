@@ -111,7 +111,7 @@ else:
 
     cache = diskcache.Cache("./cache")
     background_callback_manager = DiskcacheManager(cache)
-    one_backend = RedisBackend(host="redis", port=6379)
+    one_backend = RedisBackend(host="localhost", port=6379)
 
 app = DashProxy(
     __name__
