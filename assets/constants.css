@@ -1,7 +1,7 @@
 
 :root {
     --fontfamily: 'Lato', monospace;
-    --bodycolor: rgba(247, 232, 183, 0.949);
+    --bodycolor: #f7e8b7f2;
     --borderColor: #ff0000;
     --bodybackgroundcolor: #1a212b;
     --bulletcolor: rgba(247, 232, 183, 0.949);

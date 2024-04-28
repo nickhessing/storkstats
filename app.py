@@ -185,14 +185,18 @@ Projects = pd.read_excel(open('assets/Attributes/dashboard_data/cookpi_per_pi.xl
 for sheet_name in unique_dss_tab:
     df = pd.DataFrame(pd.read_excel('assets/Attributes/dashboard_data/cookpi_per_pi.xlsx', sheet_name=sheet_name))
     attributeframetmp.append(df)
+
 def generate_hex():
     return '#' + ''.join(np.random.choice(list('0123456789ABCDEF'), size=6))
 
 # Concatenate the DataFrames
 attributeframe = pd.concat(attributeframetmp)
 attributeframe.fillna(0, inplace=True)
+print(attributeframe)
 print(attributeframe[['LevelColor','LevelName']])
+print(attributeframe[['Filter1Color','Filter1']])
 attributeframe['LevelColor'] = attributeframe.apply(lambda row: generate_hex() if row['LevelColor'] == 0 else row['LevelColor'], axis=1)
+attributeframe['Filter1Color'] = attributeframe.apply(lambda row: '#f7e8b7f2' if row['Filter1Color'] == 0 else row['Filter1Color'], axis=1)
 #you dont have to, so thats why we and frontera created seatless
 
 
@@ -1443,8 +1447,8 @@ tabscontainer = html.Div(
 
 app.layout = html.Div([
     html.Div([
-    dbc.Col([WalletSwitch], className="col-sm-12 col-md-12 col-lg-12 col-xl-12"),
-    dbc.Button("Connect wallet", id="toggle-buttonn", className="mb-3 form-check-label btn btn-outline-primary active"),
+    dbc.Col([WalletSwitch], className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={'display': 'none'}),
+    dbc.Button("Connect wallet", id="toggle-buttonn", className="mb-3 form-check-label btn btn-outline-primary active",style={'display': 'none'}),
     dbc.Modal(
         [
             dbc.ModalHeader("Modal Title"),
@@ -1475,7 +1479,7 @@ app.layout = html.Div([
                  className='h7'),
         dbc.Modal([
             dbc.ModalBody(children=[
-                dbc.Col([mainlogo],className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={"margin-bottom": '2px'}),
+                dbc.Col([mainlogo],className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={"margin-bottom": '2px','height':'100px','opacity':'10%'}),
                 dbc.Col([Category1],className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={"margin-bottom": '2px'}),
                 dbc.Col([Level0DD],className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={"margin-bottom": '2px'}),
                 dbc.Col([Level1DD],className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={"margin-bottom": '2px'}),
@@ -1528,16 +1532,17 @@ app.layout = html.Div([
                 id="collapse-button",
                 className="mb-3",
                 n_clicks=0,
-                style={'right': '50%','bottom': '2%','position':'fixed'}
+                style={'right': '50%','bottom': '2%','position':'fixed','z-index':'1000'}
                 ),   
                 dbc.Collapse(
                 dbc.Card(dbc.CardBody(html.Div(id="graphcontainerOutput"
-                         ,style={'min-height': 'auto'})
-                         ),style={"background-color":"transparent"}),
+                         ,style={'min-height': 'auto','padding':'0px'})
+                         ),style={"background-color":"transparent",'padding':'0px'}),
                 id="collapse",
+                style={'padding':'0px'},
                 is_open=False,
                 )
-            ]),
+            ],style={'padding':'0px'}),
             
             ],className="col-sm-11 col-md-11 col-lg-10 col-xl-10 pretty_bigtab",style={"margin": '0 auto','margin-top':'20px','min-height': 'auto','display': 'block'} 
     ),
@@ -2662,6 +2667,8 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
                 carousellistnew.append(
                 f"""html.Div(
                         dbc.Row([
+                            dbc.Row(html.I('{KPIImageLogo}', className='material-icons md-48',style={{'position':'absolute','top':'42%','left':'4%','color' : '{logocolor}','padding':'0px','font-size': '44px'}},
+                                           id='iconidtest{number}', n_clicks=0)),
                             dbc.Row([dcc.Textarea(value=f'{kpi}',
                                              disabled=True,
                                              draggable=False,
@@ -2670,9 +2677,9 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
                                              className='col-12 h6',
                                              style={{'margin-top':'25px'}})]),
                             dbc.Row([
-                                dbc.Col([html.Div([html.I('{KPIImageLogo}', className='material-icons md-48',style={{'position':'relative','text-align': 'center','color' : '{logocolor}','padding':'0px','font-size': '44px'}},
-                                           id='iconid{number}', n_clicks=0),
-                                           ])],style={{'position':'relative','padding':'0px'}},className='{logoclass}'),
+                                #dbc.Col([html.Div([html.I('{KPIImageLogo}', className='material-icons md-48',style={{'text-align': 'center','color' : '{logocolor}','padding':'0px','font-size': '44px'}},
+                                #           id='iconid{number}', n_clicks=0),
+                                #           ])],style={{'position':'relative','padding':'0px'}},className='{logoclass}'),
                                 #html.I('info', className='material-icons md-18',style={{'text-align':'right','right':'4%','top':'4%','position':'absolute'}}, 
                                 #           id='open-box{number}', n_clicks=0),
                                 dbc.Col([html.Div([
@@ -2693,7 +2700,8 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
                                             disabled=True,
                                             readOnly=True,
                                             draggable=False,
-                                            className='col-12 h6'
+                                            className='col-12 h6',
+                                            style={{'font-size': '26px','padding':'0px'}}
                                         ),
                                         #html.Div([
                                         #     dcc.Textarea(value=f'', 
@@ -2707,7 +2715,7 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
                                         #     html.I({arrow},className="material-icons icon",id="arrow{number}")
                                         #    ],id="indicatorlast-graph{number}TXTLogo",style={style})
                                     ]),
-                                ],id='CardContent{number}')],className='{valueclass}'),
+                                ],id='CardContent{number}')],style={{'position':'absolute','top':'52%','left':'18%'}},className='{valueclass}'),
                         	    ])
                             ])
                         ,id=dict(type='filter-dropdown-ex3',index = '{kpi}'),style={style111},className='carddiv')"""
@@ -2820,6 +2828,7 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
         raise
 
 
+
 ##graphlevel0
 @app.callback(
     Output('graphcontainerOutput', 'children',allow_duplicate=True),
@@ -2845,8 +2854,8 @@ def allgraphsindiv(values):
     
      [Input({"type": "graphsloop", "index": ALL}, 'value'),
      Input('GrainSelect', 'value'),
-   #  Input('dflcomparekpi', 'data'),
-     Input('top15compare', 'data'),
+     Input('dflcomparekpi', 'data'),
+   #  Input('top15compare', 'data'),
      Input("CumulativeSwitch", "label"),
      Input("PercentageTotalSwitch", "label"),
      Input("ShowValueSwitch", "label"),
@@ -2868,13 +2877,17 @@ def update_kpiaggcontainer(graphsloop,GrainSelect,dflcomparekpi,CumulativeSwitch
     try:
         #mastersetkpifiltered=dflcomparekpi
         graphs = []
+        changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
+        print(changed_id)
         if collapse == False:
+            raise PreventUpdate
+        elif changed_id=='button_group1.value' or changed_id == 'button_group.value':
             raise PreventUpdate
         else:
             for (i, value) in enumerate(graphsloop): 
                 KPISelect = value 
-                mastersetkpifiltered = dflcomparekpi.filter((pl.col("KPIName") == KPISelect))   
-                columns_to_removemasterset = mastersetkpifiltered.columns
+                df_by_Level0Name = dflcomparekpi.filter((pl.col("KPIName") == KPISelect))   
+                columns_to_removemasterset = df_by_Level0Name.columns
                 noemer = f'pl.col("Denominator").{eval(AggregateNumDenom(KPIDenomAgg[KPISelect]))}()'
                 teller = f'pl.col("Numerator").{eval(AggregateNumDenom(KPINumAgg[KPISelect]))}()'
                 dataframe = Cumloop0(CumulativeSwitch)
@@ -2918,7 +2931,7 @@ def update_kpiaggcontainer(graphsloop,GrainSelect,dflcomparekpi,CumulativeSwitch
                     traces3 = []
                     mastersetkpifilterednewcol = [column for column in columns_to_removemasterset if '_1' not in column and '_2' not in column and column not in ['d_level1_id', 'd_level2_id']]
                     # Select only the filtered columns
-                    mastersetkpifilterednew = mastersetkpifiltered.select(mastersetkpifilterednewcol)
+                    mastersetkpifilterednew = df_by_Level0Name.select(mastersetkpifilterednewcol)
                     mastersetkpifilterednewcol.remove('Numerator')
                     mastersetkpifilterednewcol.remove('Denominator')
                     mastersetkpifilterednotime = (
@@ -3086,7 +3099,8 @@ def update_kpiaggcontainer(graphsloop,GrainSelect,dflcomparekpi,CumulativeSwitch
                                         scale = 10,
                                         filename = 'Plotlygraph'),
                                   ),
-                                  className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 pretty_graph"
+                                  className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 pretty_graph",
+                                  style={'padding':'0px','padding-top':'30px','border-radius': '10px'}
                                   )
                         )
             #print(traces3)
@@ -3139,6 +3153,7 @@ def DropdownOptions(Category1Select,Level0NameSelect,Level1NameSelect,Level2Name
     except Exception as e:
         logging.error(f"Exception in callback: {str(e)}")
         raise
+
 
 @app.callback(
     Output('graphlevel0', 'figure'),
