@@ -95,8 +95,14 @@ external_stylesheets = [
 
 # Connect to your internal Redis instance using the REDIS_URL environment variable
 # The REDIS_URL is set to the internal Redis URL e.g. redis://red-343245ndffg023:6379
-if "REDIS_URL" in os.environ.values():
-    print("os.environ in environment")
+if os.environ.get('USERNAME') == 'nickh':
+    print("host = localhost")
+    import diskcache
+    cache = diskcache.Cache("./cache")
+    background_callback_manager = DiskcacheManager(cache)
+    one_backend = RedisBackend(host="localhost", port=6379)
+
+    """
     # Use Redis & Celery if REDIS_URL set as an env variable
     redis_url = os.environ["REDIS_URL"]
     from celery import Celery
@@ -104,14 +110,14 @@ if "REDIS_URL" in os.environ.values():
     celery_app = Celery(__name__, broker=redis_url, backend="redis")
     background_callback_manager = CeleryManager(celery_app)
     one_backend = RedisBackend(host="redis", port=6379)
+    """
 
 else:
-    print("host = localhost")
+    print("productionenv")
     import diskcache
-
     cache = diskcache.Cache("./cache")
     background_callback_manager = DiskcacheManager(cache)
-    one_backend = RedisBackend(host="localhost", port=6379)
+    one_backend = RedisBackend(host="redis", port=6379)
 
 app = DashProxy(
     __name__
