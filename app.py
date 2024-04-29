@@ -202,9 +202,21 @@ print(attributeframe)
 print(attributeframe[['LevelColor','LevelName']])
 print(attributeframe[['Filter1Color','Filter1']])
 attributeframe['LevelColor'] = attributeframe.apply(lambda row: generate_hex() if row['LevelColor'] == 0 else row['LevelColor'], axis=1)
-attributeframe['Filter1Color'] = attributeframe.apply(lambda row: '#f7e8b7f2' if row['Filter1Color'] == 0 else row['Filter1Color'], axis=1)
-#you dont have to, so thats why we and frontera created seatless
 
+def color_logic(row):
+    if row['Filter1'] == 'geen':
+        return 'blue'
+    elif row['Filter1Color'] == 0:
+        return generate_hex()
+    else:
+        return row['Filter1Color']
+
+attributeframe['Filter1Color'] = attributeframe.apply(color_logic, axis=1)
+
+#attributeframe['Filter1Color'] = attributeframe.apply(lambda row: generate_hex() if row['Filter1Color'] == 0 else row['Filter1Color'], axis=1)
+#you dont have to, so thats why we and frontera created seatless
+print(attributeframe[['LevelColor','LevelName']])
+print(attributeframe[['Filter1Color','Filter1']])
 
 attributeframe1 = attributeframe.filter(regex=r'^(?!.*_ID$)')
 attributeframe1.fillna("Overig", inplace = True)  
