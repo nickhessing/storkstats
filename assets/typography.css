@@ -23,6 +23,9 @@ body:read-only {
 	color: var(--bodycolor);
 	text-align: left;
 	resize: none;
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  overflow-x: hidden;
 	background: linear-gradient(var(--topcolor), var(--middlecolor1),var(--middlecolor2), var(--bottomcolor));
   transition: var(--tran-05);
   contenteditable: False;

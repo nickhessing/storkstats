@@ -1146,7 +1146,79 @@ pre code {
 .dash-graph text{
 border-color: red;
 }
-
+.pretty_bigtab {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	padding-left: 0px;
+	padding-top: 15px;
+	padding-bottom: 45px;
+	padding-right: 0px;
+	position: static;
+	overflow: auto;
+  }
+.pretty_tab {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	border-bottom-right-radius: 1px;
+	background-color: transparent;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	position: relative;
+	overflow: auto;
+  }
+  .pretty_tab2 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: var(--graphboven);
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .pretty_tab3 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: #8a928e; 
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .empty_tab {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	margin-top: 30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  .empty_tab2 {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	padding-top: 30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  
 .trich_carousel .slick-prev {
 	font-family: "Material Icons";
 	font-weight: 900;
@@ -1486,7 +1558,80 @@ body.dark .sidebar header .toggle {
 	.container-sm {
 		max-width: 540px
 	}
+	.pretty_bigtab {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		padding-left: 3px;
+		padding-top: 15px;
+		padding-bottom: 45px;
+		padding-right: 3px;
+		position: static;
+		overflow: auto;
+	  }
+	.pretty_tab {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		border-bottom-right-radius: 1px;
+		background-color: transparent;
+		margin-bottom: 0px;
+		margin-right: 2px;
+		margin-left: 2px;
+		padding-left: 0px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-right: 0px;
+		position: relative;
+		overflow: auto;
+	  }
+	  .pretty_tab2 {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		background-color: var(--graphboven);
+		width: 100%;
+		margin: 10px;
+		padding: 15px;
+		position: relative;
+		box-shadow: 1px 1px 1px #1b568c; 
+		overflow: auto;
+	  }
+	  
+	  .pretty_tab3 {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		background-color: #8a928e; 
+		width: 100%;
+		margin: 10px;
+		padding: 15px;
+		position: relative;
+		box-shadow: 1px 1px 1px #1b568c; 
+		overflow: auto;
+	  }	
+	  
+  .empty_tab {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	margin-top: 30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  .empty_tab2 {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
 	
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  
 .dash-graph text{
 border-color: red;
 }
@@ -1833,8 +1978,79 @@ body.dark .sidebar header .toggle {
 	.container-md {
 		max-width: 720px
 	}
-
-
+	.pretty_bigtab {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		padding-left: 15px;
+		padding-top: 15px;
+		padding-bottom: 45px;
+		padding-right: 15px;
+		position: static;
+		overflow: auto;
+	  }
+	.pretty_tab {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		border-bottom-right-radius: 1px;
+		background-color: var(--graphboven);
+		margin-bottom: 0px;
+		margin-right: 10px;
+		padding-left: 15px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-right: 0px;
+		position: relative;
+		overflow: auto;
+	  }
+	  .pretty_tab2 {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		background-color: var(--graphboven);
+		width: 100%;
+		margin: 10px;
+		padding: 15px;
+		position: relative;
+		box-shadow: 1px 1px 1px #1b568c; 
+		overflow: auto;
+	  }
+	  
+	  .pretty_tab3 {
+		border-radius: 10px;
+		border-top-left-radius: 1px;
+		background-color: #8a928e; 
+		width: 100%;
+		margin: 10px;
+		padding: 15px;
+		position: relative;
+		box-shadow: 1px 1px 1px #1b568c; 
+		overflow: auto;
+	  }
+	  
+  .empty_tab {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	margin-top: 30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  .empty_tab2 {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  
 
 .dash-graph text{
 border-color: red;
@@ -2183,8 +2399,67 @@ body.dark .sidebar header .toggle {
 	.container-lg {
 		max-width: 960px
 	}
-}
 
+.pretty_tab {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	border-bottom-right-radius: 1px;
+	background-color: var(--graphboven);
+	margin-bottom: 0px;
+	margin-right: 10px;
+	padding-left: 15px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	position: relative;
+	overflow: auto;
+  }
+  .pretty_tab2 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: var(--graphboven);
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .pretty_tab3 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: #8a928e; 
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .empty_tab {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	margin-top: 30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  .empty_tab2 {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  
+}
 @media (min-width: 1200px) {
 	.container,
 	.container-sm,
@@ -2193,8 +2468,67 @@ body.dark .sidebar header .toggle {
 	.container-xl {
 		max-width: 1140px
 	}
-}
 
+ .pretty_tab {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	border-bottom-right-radius: 1px;
+	background-color: var(--graphboven);
+	margin-bottom: 0px;
+	margin-right: 10px;
+	padding-left: 15px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	position: relative;
+	overflow: auto;
+  }
+  .pretty_tab2 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: var(--graphboven);
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .pretty_tab3 {
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	background-color: #8a928e; 
+	width: 100%;
+	margin: 10px;
+	padding: 15px;
+	position: relative;
+	box-shadow: 1px 1px 1px #1b568c; 
+	overflow: auto;
+  }
+  
+  .empty_tab {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	margin-top:30px;
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  .empty_tab2 {
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	background-color: var(--graphboven);
+	margin: 0px;
+	padding: 0px;
+	
+	position: relative;
+	box-shadow: 0px 0px 0px #0c2a4d;
+  }
+  
+}
 .row {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -12546,25 +12880,6 @@ table-danger,
     box-shadow: 2px 2px 2px lightgrey;
   }
 
-.empty_tab {
-  border-radius: 15px;
-  border-top-left-radius: 0px;
-  background-color: var(--graphboven);
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  box-shadow: 0px 0px 0px #0c2a4d;
-}
-.empty_tab2 {
-  border-radius: 15px;
-  border-top-left-radius: 0px;
-  background-color: var(--graphboven);
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  box-shadow: 0px 0px 0px #0c2a4d;
-}
-
 .dash-dropdown {
 background-color: transparent;
 border-radius: 45px;
@@ -12751,58 +13066,6 @@ color: #D3D3D3;
   min-height: auto; 
 }
 
-.pretty_tab {
-  border-radius: 10px;
-  border-top-left-radius: 1px;
-  border-bottom-right-radius: 1px;
-  background-color: var(--graphboven);
-  margin-bottom: 0px;
-  margin-right: 10px;
-  padding-left: 15px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  position: relative;
-  overflow: auto;
-}
-.pretty_tab2 {
-  border-radius: 10px;
-  border-top-left-radius: 1px;
-  background-color: var(--graphboven);
-  width: 100%;
-  margin: 10px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 1px 1px 1px #1b568c; 
-  overflow: auto;
-}
-
-.pretty_tab3 {
-  border-radius: 10px;
-  border-top-left-radius: 1px;
-  background-color: #8a928e; 
-  width: 100%;
-  margin: 10px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 1px 1px 1px #1b568c; 
-  overflow: auto;
-}
-
-.pretty_bigtab {
-  border-radius: 10px;
-  border-top-left-radius: 1px;
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding-left: 15px;
-  padding-top: 15px;
-  padding-bottom: 45px;
-  padding-right: 15px;
-  position: static;
-  overflow: auto;
-}
 
 .pretty_card {
   border-radius: 10px;

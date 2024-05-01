@@ -187,6 +187,10 @@ attributeframetmp = []
 Projects = pd.read_excel(open('assets/Attributes/dashboard_data/cookpi_per_pi.xlsx', 'rb'),
               sheet_name='Project')
 
+Filters = pd.read_excel(open('assets/Attributes/dashboard_data/cookpi_per_pi.xlsx', 'rb'),
+              sheet_name='Filter')
+levelnamefiltername = dict(Filters.set_index('LevelEntitytype')['FilterName'].to_dict())
+levelnamefilterlogo = dict(Filters.set_index('LevelEntitytype')['FilterLogo'].to_dict())
 # Iterate through the sheets and read them into DataFrames
 for sheet_name in unique_dss_tab:
     df = pd.DataFrame(pd.read_excel('assets/Attributes/dashboard_data/cookpi_per_pi.xlsx', sheet_name=sheet_name))
@@ -1354,7 +1358,10 @@ tabs = html.Div([
     html.Div(
         dbc.Row([
         dbc.Col(html.Div([
-            dls.Hash(html.Div([dcc.Graph(id='graph-level0compare',
+            dls.Hash(html.Div([
+                html.Div([html.I("settings_suggest",id='open-settings',className="material-icons",n_clicks=0),
+                                    ],style={'position':'absolute','z-index': '1'}),  
+                dcc.Graph(id='graph-level0compare',
                       clear_on_unhover=True,
                       config=dict(
                           modeBarButtonsToAdd=['customButton'],
@@ -1390,26 +1397,30 @@ tabs = html.Div([
         ),className="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 empty_tab2"
         ),
         dbc.Col(dls.Hash(#,spinner_class_name='loading'
-            dcc.Graph(id='graphlevel0',
-                      config=dict(
-                        modeBarButtonsToAdd =  ['customButton'],
-                        modeBarButtonsToRemove = ['pan', 'lasso2d', 'select', 'zoom2d', 'zoomIn', 'zoomOut','toImage','resetScale',
-                                                      'hoverCompareCartesian', 'logo', 'autoScale'],
-                        displaylogo = False,
-                        #scrollZoom = True,
-                        toImageButtonOptions = dict(
-                            width =550,
-                            height = 300,
-                            format = 'png',
-                            scale = 10,
-                            filename = 'Plotlygraph'),
-                      ),
-                      className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 pretty_graph"
-                      ),color=ProjectOrange,
-                        speed_multiplier=2,
-                        size=100,
-                        #debounce=1000
-                      ),className="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 empty_tab"
+            html.Div([
+                html.Div([html.I("settings_suggest",id='open-settingstime',className="material-icons",n_clicks=0),
+                                    ],style={'position':'absolute','z-index': '1'}),  
+                dcc.Graph(id='graphlevel0',
+                          config=dict(
+                            modeBarButtonsToAdd =  ['customButton'],
+                            modeBarButtonsToRemove = ['pan', 'lasso2d', 'select', 'zoom2d', 'zoomIn', 'zoomOut','toImage','resetScale',
+                                                          'hoverCompareCartesian', 'logo', 'autoScale'],
+                            displaylogo = False,
+                            #scrollZoom = True,
+                            toImageButtonOptions = dict(
+                                width =550,
+                                height = 300,
+                                format = 'png',
+                                scale = 10,
+                                filename = 'Plotlygraph'),
+                          ),
+                          className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 pretty_graph"
+                          )
+                          ]),color=ProjectOrange,
+                            speed_multiplier=2,
+                            size=100,
+                            #debounce=1000
+                          ),className="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 empty_tab"
         ),
         ],className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12"
         ),className="row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 pretty_tab"
@@ -1542,9 +1553,7 @@ app.layout = html.Div([
         ]),
 
     dbc.Row(children=[
-            html.Div(children=[
-                     html.Div([html.I("settings_suggest",id='open-settings',className="material-icons",n_clicks=0),
-                                ],style={'position':'relative','z-index': '1'}),                     
+            html.Div(children=[                   
                      dbc.Row([html.Div([button_group],id='button_group00',style={'position':'relative'})],className="col-sm-12 col-md-12 col-lg-12 col-xl-12"),
                      tabs,
                      dbc.Row([html.Div([button_group1],id='button_group11',style={'right':'0px','position':'absolute'})],style={'margin-bottom':'20px'},className="col-sm-12 col-md-12 col-lg-12 col-xl-12"),
@@ -1788,12 +1797,14 @@ kpi =[]
     Input({'type': 'filter-dropdown-ex3-reset', 'index': ALL}, 'n_clicks'),
     Input('KPIGroupSelect', 'value'),
     Input({'type': 'kpigroup-ex3', 'index': ALL}, 'n_clicks'),
+    Input({'type': 'filter-dropdown-ex3-reset', 'index': ALL}, 'n_clicks')
     #eval(kpigrouplistinput3[0])
     ], prevent_initial_call=True
  )
 
-def update_df_KPIGroup(n_clicks,n_clicks2,KPIGroupSelect,navbarselect):#,*args,KPIGroupSelect
+def update_df_KPIGroup(n_clicks,n_clicks2,KPIGroupSelect,navbarselect,arrows):#,*args,KPIGroupSelect
     print('execute update_df_KPISelect')  
+    print(arrows)
     try:
         ctx = dash.callback_context
         merged_clicks = n_clicks + n_clicks2
@@ -2042,6 +2053,12 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
                 ], style={{'align-items': 'center', 'justify-content': 'center'}}
                 )"""
                 )
+            print(Filters)
+            tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
+            FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
+            FilterName_0_list = levelnamefiltername[row['dds_name']]
+            FilterLogo_0_list = levelnamefilterlogo[row['dds_name']]
+            print(FilterLogo_0_list)
         elif row['Level_ID_present'] == 'd_level1_id':
             result[row['Level_ID_present']] = row['dds_name']
             level1.append(result['d_level1_id'])
@@ -2054,6 +2071,10 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
                 ], style={{'align-items': 'center', 'justify-content': 'center'}}
                 )"""
                 )
+            tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
+            FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
+            FilterName_0_list = levelnamefiltername[row['dds_name']]
+            FilterLogo_0_list = levelnamefilterlogo[row['dds_name']]
         elif row['Level_ID_present'] == 'd_level2_id':
             result[row['Level_ID_present']] = row['dds_name']
             level2.append(result['d_level2_id']) #used to fill the name of the dropdownlist
@@ -2066,14 +2087,16 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
                 ], style={{'align-items': 'center', 'justify-content': 'center'}}
                 )"""
                 )
+            tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
+            FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
+            FilterName_0_list = levelnamefiltername[row['dds_name']]
+            FilterLogo_0_list = levelnamefilterlogo[row['dds_name']]
             
     button_grouptmp = [
     #{"label": row['dss_tab'], "value": f"LevelName_{row['Level_ID_present'][7]}"}
     #for _, row in cookpi_attributes.iterrows()
     ]
     button_grouptmp.clear()
-    tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
-    FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
     cnt = 0
     for f,b in zip(button_sweeps_count,button_names):
         print('printttie')
@@ -2093,10 +2116,12 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
         testlogo = {"label": html.Div([eval(f'html.Div({b}) '),eval(f"""html.Div(html.I('filter_list_off',id='sweepl{Level}',className='material-icons',style={sweepstyle}),style={{'padding':'0px','text-size':'14px'}},id=dict(type='sweepertje',index='{f}'))""")],style={'overflow': 'hidden','white-space': 'nowrap'}),"value": f'{f}'}
         button_grouptmp.append(testlogo)
         cnt += 1
-    for d in FilterName_0_list:
+    for d,g in zip([FilterName_0_list],[FilterLogo_0_list]):
+        print(d)
+        print(g)
         filternamelogo = f"""html.Span(
                 [
-                    html.I('tram', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
+                    html.I('{g}', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
                                            id='iconidtestl2', n_clicks=0),
                     html.Span('{d}', style={labelshow}),
                 ], style={{'align-items': 'center', 'justify-content': 'center'}}
