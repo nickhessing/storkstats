@@ -380,6 +380,8 @@ KPIGroupdropdown = html.Div([
         value=KPIGroupList,
         multi=True,
         options=[{'label': i, 'value': i} for i in KPIGroupList],
+        persistence=True,
+        persistence_type='local'  
         
   ),
 ],
@@ -407,7 +409,9 @@ Radiograin = html.Div([
       value="M",
       labelClassName="date-group-labels",
       labelCheckedClassName="date-group-labels-checked",
-      inline=True
+      inline=True,
+      persistence=True,
+      persistence_type='local'  
   )
  ],
 )
@@ -523,6 +527,8 @@ Level1DD = html.Div([
         optionHeight=1,
         placeholder="Select a value",
         value=Level1NameListIS,
+        persistence=True,
+        persistence_type='local'  
 ),
 ],id="Level1DD"
 )
@@ -599,6 +605,8 @@ Level2DD = html.Div([
         multi=True,
         placeholder="Select a value",
         value=Level2NameListIS,
+        persistence=True,
+        persistence_type='local'  
 ),
 ],id="Level2DD"
 )
@@ -669,6 +677,8 @@ Category1 = html.Div([
     optionHeight=1,
     placeholder="Select a value",
     value=Catergory0List,#'Derivatives',
+    persistence=True,
+    persistence_type='local'  
 ),
 ],id="Category1"
 )
@@ -779,6 +789,8 @@ Perioddropdown = html.Div([
         id="Perioddropdown",
        # value="2019-05-01",
         multi=True,
+        persistence=True,
+        persistence_type='memory'  
     ),
 ],
     className="pretty_container",
@@ -1960,9 +1972,10 @@ def polarsdataframeinitial(daterange,GrainSelect):
               Input("CompetitorSwitch", "label"),
               Input('coinsinwallet','data'),
               Input('coinsinwalletComp','data'),
+              Input("breakpoints", "widthBreakpoint"),
 )
 
-def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSelect,Level2NameSelect,Category1Select,CompetitorSwitch,coinsinwallet,coinsinwalletComp):
+def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSelect,Level2NameSelect,Category1Select,CompetitorSwitch,coinsinwallet,coinsinwalletComp,widthBreakpoint):
     #changes buttons
     #changes Levels
     if coinsinwallet and WalletSwitch == 'True' and CompetitorSwitch =='True':
@@ -2004,6 +2017,10 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
                                 )
         )
     dff_sorted = dff.sort(pl.col("Period_int"))
+    if widthBreakpoint=='sm':
+        labelshow = {'display': 'none','font-size':'14px'}
+    else:
+        labelshow = {'font-size': 15, 'padding-left': 10, 'padding-top': 0}
     cookpi_attributes = cookpi_attributestmp[(cookpi_attributestmp.d_kpi_id == KPINameToID[KPISelect])]
     result = {}
     level0 =[]
@@ -2011,45 +2028,87 @@ def change_KPI(dflmasterfrontpolarsRedis,KPISelect,Level0NameSelect,Level1NameSe
     level2 =[]
     button_sweeps_count = []
     button_names = []
+    KPIImageLogo = 'tram'
     for index,row in cookpi_attributes.iterrows():
         if row['Level_ID_present'] == 'd_level0_id':
             result[row['Level_ID_present']] = row['dds_name']
             level0.append(result['d_level0_id'])
             button_sweeps_count.append(f"LevelName_{row['Level_ID_present'][7]}")
-            button_names.append(result['d_level0_id'])
+            button_names.append(f"""html.Span(
+                [
+                    html.I('{row['LevelEntitylogo']}', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
+                                           id='iconidtestl0', n_clicks=0),
+                    html.Span('{result['d_level0_id']}', style={labelshow}),
+                ], style={{'align-items': 'center', 'justify-content': 'center'}}
+                )"""
+                )
         elif row['Level_ID_present'] == 'd_level1_id':
             result[row['Level_ID_present']] = row['dds_name']
             level1.append(result['d_level1_id'])
             button_sweeps_count.append(f"LevelName_{row['Level_ID_present'][7]}")
-            button_names.append(result['d_level1_id'])
+            button_names.append(f"""html.Span(
+                [
+                    html.I('{row['LevelEntitylogo']}', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
+                                           id='iconidtestl1', n_clicks=0),
+                    html.Span('{result['d_level1_id']}', style={labelshow}),
+                ], style={{'align-items': 'center', 'justify-content': 'center'}}
+                )"""
+                )
         elif row['Level_ID_present'] == 'd_level2_id':
             result[row['Level_ID_present']] = row['dds_name']
             level2.append(result['d_level2_id']) #used to fill the name of the dropdownlist
             button_sweeps_count.append(f"LevelName_{row['Level_ID_present'][7]}")
-            button_names.append(result['d_level2_id'])
+            button_names.append(f"""html.Span(
+                [
+                    html.I('{row['LevelEntitylogo']}', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
+                                           id='iconidtestl2', n_clicks=0),
+                    html.Span('{result['d_level2_id']}', style={labelshow}),
+                ], style={{'align-items': 'center', 'justify-content': 'center'}}
+                )"""
+                )
+            
     button_grouptmp = [
     #{"label": row['dss_tab'], "value": f"LevelName_{row['Level_ID_present'][7]}"}
     #for _, row in cookpi_attributes.iterrows()
     ]
     button_grouptmp.clear()
+    tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
+    FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
     cnt = 0
     for f,b in zip(button_sweeps_count,button_names):
         print('printttie')
+        print(f)
+        print(b)
         Level = eval(f[-1])
-        if eval(f'Level{Level}NameSelect') == eval(f'list(Level{Level}NameList)'):
-            sweepstyle = {'display': 'none','font-size':'14px'}
+        set1 = set(eval(f'Level{Level}NameSelect'))
+        set2 = set(eval(f'list(Level{Level}NameList)'))
+        print(set1)
+        print(set2)
+        if set1 == set2:
+            sweepstyle = {'visibility': 'hidden','font-size':'14px','position': 'absolute'}
+            print('nosweep')
         else:
             sweepstyle = {'opacity':'1','font-size':'14px'}#,'color':ProjectOrange
-        testlogo = {"label": html.Div([f'{b}  ',eval(f"""html.Div(html.I('filter_list_off',id='sweepl{Level}',className='material-icons',style={sweepstyle}),style={{'display': 'inline-block','padding':'0px','text-size':'14px'}},id=dict(type='sweepertje',index='{f}'))""")]),"value": f'{f}'}
+            print('sweep')
+        testlogo = {"label": html.Div([eval(f'html.Div({b}) '),eval(f"""html.Div(html.I('filter_list_off',id='sweepl{Level}',className='material-icons',style={sweepstyle}),style={{'padding':'0px','text-size':'14px'}},id=dict(type='sweepertje',index='{f}'))""")],style={'overflow': 'hidden','white-space': 'nowrap'}),"value": f'{f}'}
         button_grouptmp.append(testlogo)
         cnt += 1
-    tmp = dff_sorted.unique(subset=["FilterName_0"],maintain_order=True)
-    FilterName_0_list = [row["FilterName_0"] for row in tmp.iter_rows(named=True)]
     for d in FilterName_0_list:
-        if eval(f'Category1Select') == eval(f'list(Catergory0List)'):
-            filter1 = {"label": d,"value": "Filter1_0"}
+        filternamelogo = f"""html.Span(
+                [
+                    html.I('tram', className='material-icons md-48',style={{'align':'center','padding':'0px','font-size': '28px'}},
+                                           id='iconidtestl2', n_clicks=0),
+                    html.Span('{d}', style={labelshow}),
+                ], style={{'align-items': 'center', 'justify-content': 'center'}}
+                )"""
+        set1 = set(eval(f'Category1Select') )
+        set2 = set(eval(f'list(Catergory0List)'))
+        if set1 == set2:
+            sweepstyle = {'visibility': 'hidden','font-size':'14px','position': 'absolute'}
         else:
-            filter1 = {"label": html.Div([f'{d}  ',eval(f"""html.Div(html.I('filter_list_off',id='SweepFiltertje1_0',className='material-icons',style={sweepstyle}),style={{'display': 'inline-block','padding':'0px','text-size':'14px'}},id=dict(type='sweepertje',index='SweepFilter1_0'))""")]),"value": 'Filter1_0'}
+            sweepstyle = {'opacity':'1','font-size':'14px'}#,'color':ProjectOrange
+            print('sweep')
+        filter1 = {"label": html.Div([eval(f'html.Div({filternamelogo}) '),eval(f"""html.Div(html.I('filter_list_off',id='SweepFiltertje1_0',className='material-icons',style={sweepstyle}),style={{'padding':'0px','text-size':'14px'}},id=dict(type='sweepertje',index='SweepFilter1_0'))""")]),"value": 'Filter1_0'}
         button_grouptmp.append(filter1)
     button_groups = sorted(button_grouptmp, key=lambda x: x['value'])
     return Serverside(dff_sorted),'bs' if not level0 else level0[0],'bs' if not level1 else level1[0],'bs' if not level2 else level2[0],button_groups,button_groups
@@ -2076,67 +2135,6 @@ def change_button_groups(button_group,button_groupoptions,button_group1options):
 """
 
 
-@app.callback([Output('dflcomparekpi', 'data'),
-               Output('dfgroups', 'data'),
-              # Output('output-container-date-picker-range', 'children'),
-               ],           
-              Input('dflmasterfrontpolarsRedis', 'data'),
-              Input('KPIGroupSelect', 'value'),
-              Input('Level0NameSelect', 'value'),
-              Input('Level1NameSelect', 'value'),
-              Input('Level2NameSelect', 'value'),
-              Input('Category1Select', 'value'),
-)
-
-def All_KPIs(dflmasterfrontpolarsRedis,KPIGroupSelect,Level0NameSelect,Level1NameSelect,Level2NameSelect,Category1Select):
-    #changes buttons
-    #changes Levels
-    dflpolarsfilterlist = []
-    dflpolarsfilterlistgroup = []
-    ###################################
-    #calculate for divs with multiple KPIs
-    ###################################
-    for i in KPIName_listlevel2:
-        tmppolars2tmp = dflmasterfrontpolarsRedis.filter((
-                         (pl.col("LevelName_0").is_in(Level0NameSelect))
-                        & (pl.col("LevelName_1").is_in(Level1NameSelect))
-                        & (pl.col("LevelName_2").is_in(Level2NameSelect))
-                       # & (pl.col("KPIGroup").is_in(KPIGroupSelect))
-                        & (pl.col("KPIName") ==i)
-                        & (pl.col("Filter1_0").is_in(Category1Select)))
-        )
-        tmppolars2 = tmppolars2tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
-                                          )
-        dflpolarsfilterlistgroup.append(tmppolars2tmp)
-        dflpolarsfilterlist.append(tmppolars2)
-    for d in KPIName_listlevel1:
-        tmppolars1tmp = dflmasterfrontpolarsRedis.filter((
-                      (pl.col("LevelName_0").is_in(Level0NameSelect))
-                     & (pl.col("LevelName_1").is_in(Level1NameSelect))
-                    # & (pl.col("KPIGroup").is_in(KPIGroupSelect))
-                     & (pl.col("KPIName")==d)
-                     & (pl.col("Filter1_0").is_in(Category1Select)))
-        )
-        tmppolars1 = tmppolars1tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
-        )
-        dflpolarsfilterlist.append(tmppolars1)
-        dflpolarsfilterlistgroup.append(tmppolars1tmp)
-    for v in KPIName_listlevel0:
-        tmppolars0tmp = dflmasterfrontpolarsRedis.filter((
-                          (pl.col("LevelName_0").is_in(Level0NameSelect))
-                     #   & (pl.col("KPIGroup").is_in(KPIGroupSelect))
-                        & (pl.col("KPIName")==v)
-                        & (pl.col("Filter1_0").is_in(Category1Select)))
-        )
-        tmppolars0 = tmppolars0tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
-        )
-        dflpolarsfilterlist.append(tmppolars0)
-        dflpolarsfilterlistgroup.append(tmppolars0tmp)
-    dff = pl.concat(dflpolarsfilterlist, how ="diagonal")
-    dffgroup = pl.concat(dflpolarsfilterlistgroup, how ="diagonal")
-    dflpolarsgroup = dffgroup.select("KPIGroup").unique()
-    dffgroups = dflpolarsgroup.sort("KPIGroup")
-    return Serverside(dff),Serverside(dffgroups)
 """
 def change_Level()
     #changes KPI's
@@ -2153,11 +2151,12 @@ cols = ['LevelName', 'LevelNameShort', 'LevelDescription','LevelEntitytype', 'Le
 @app.callback(
     Output('graphlevel0data', 'data'),
     Output('graph-level0compare-dataset', 'data'),
+    Output('top15compare', 'data'),
      [
      Input('GrainSelect', 'value'),
      Input("KPISelect", "value"),
      Input('mastersetkpifiltered', 'data'),
-     Input('top15compare', 'data'),
+    # Input('top15compare', 'data'),
      Input("CumulativeSwitch", "label"),
      Input("PercentageTotalSwitch", "label"),
      Input("ShowValueSwitch", "label"),
@@ -2173,7 +2172,7 @@ cols = ['LevelName', 'LevelNameShort', 'LevelDescription','LevelEntitytype', 'Le
      #,manager=background_callback_manager
 )
 
-def update_kpiagg_data(GrainSelect,KPISelect,mastersetkpifilteredstore,top15compare,CumulativeSwitch,PercentageTotalSwitch,ShowValueSwitch,widthBreakpoint,button_group,button_group1,Totaalswitch):  #,*args ,Level2NameSelect,toggle, relayoutData
+def update_kpiagg_data(GrainSelect,KPISelect,mastersetkpifilteredstore,CumulativeSwitch,PercentageTotalSwitch,ShowValueSwitch,widthBreakpoint,button_group,button_group1,Totaalswitch):  #,*args ,Level2NameSelect,toggle, relayoutData
     print('execute update_kpiagg data')
     try:
         Calculation = CalculationDEF(KPISelect)
@@ -2297,10 +2296,85 @@ def update_kpiagg_data(GrainSelect,KPISelect,mastersetkpifilteredstore,top15comp
         ##############################3####
         print(mastersetkpifilterednotimeecollect.columns)
         print(export.columns)
-        return Serverside(mastersetkpifilterednotimeecollect),Serverside(export)
+        return Serverside(mastersetkpifilterednotimeecollect),Serverside(export),Serverside(list(top_5_labels))
     except Exception as e:
         logging.error(f"Exception in callback update_kpiagg_data: {str(e)}")
         raise
+
+
+@app.callback([Output('dflcomparekpi', 'data'),
+               Output('dfgroups', 'data'),
+              # Output('output-container-date-picker-range', 'children'),
+               ],           
+              Input('dflmasterfrontpolarsRedis', 'data'),
+              Input('top15compare', 'data'),
+              Input('KPIGroupSelect', 'value'),
+              Input('Level0NameSelect', 'value'),
+              Input('Level1NameSelect', 'value'),
+              Input('Level2NameSelect', 'value'),
+              Input('Category1Select', 'value'),
+              Input('button_group', 'value'),
+)
+
+def All_KPIs(dflmasterfrontpolarsRedis,top15compare,KPIGroupSelect,Level0NameSelect,Level1NameSelect,Level2NameSelect,Category1Select,button_group):
+    #changes buttons
+    #changes Levels
+    dflpolarsfilterlist = []
+    dflpolarsfilterlistgroup = []
+    ###################################
+    #calculate for divs with multiple KPIs 
+    ###################################
+    print('dflmasterfrontpolarsRedis')
+    print('dflmasterfrontpolarsRedis')
+    print('dflmasterfrontpolarsRedis')
+    print(dflmasterfrontpolarsRedis)
+    print(top15compare)
+    print(button_group)
+    if top15compare:
+        dflmasterfrontpolarsRedis = dflmasterfrontpolarsRedis.filter(pl.col(button_group).is_in(top15compare))
+    else:
+        dflmasterfrontpolarsRedis = dflmasterfrontpolarsRedis
+    for i in KPIName_listlevel2:
+        tmppolars2tmp = dflmasterfrontpolarsRedis.filter((
+                         (pl.col("LevelName_0").is_in(Level0NameSelect))
+                        & (pl.col("LevelName_1").is_in(Level1NameSelect))
+                        & (pl.col("LevelName_2").is_in(Level2NameSelect))
+                       # & (pl.col("KPIGroup").is_in(KPIGroupSelect))
+                        & (pl.col("KPIName") ==i)
+                        & (pl.col("Filter1_0").is_in(Category1Select)))
+        )
+        tmppolars2 = tmppolars2tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
+                                          )
+        dflpolarsfilterlistgroup.append(tmppolars2tmp)
+        dflpolarsfilterlist.append(tmppolars2)
+    for d in KPIName_listlevel1:
+        tmppolars1tmp = dflmasterfrontpolarsRedis.filter((
+                      (pl.col("LevelName_0").is_in(Level0NameSelect))
+                     & (pl.col("LevelName_1").is_in(Level1NameSelect))
+                    # & (pl.col("KPIGroup").is_in(KPIGroupSelect))
+                     & (pl.col("KPIName")==d)
+                     & (pl.col("Filter1_0").is_in(Category1Select)))
+        )
+        tmppolars1 = tmppolars1tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
+        )
+        dflpolarsfilterlist.append(tmppolars1)
+        dflpolarsfilterlistgroup.append(tmppolars1tmp)
+    for v in KPIName_listlevel0:
+        tmppolars0tmp = dflmasterfrontpolarsRedis.filter((
+                          (pl.col("LevelName_0").is_in(Level0NameSelect))
+                     #   & (pl.col("KPIGroup").is_in(KPIGroupSelect))
+                        & (pl.col("KPIName")==v)
+                        & (pl.col("Filter1_0").is_in(Category1Select)))
+        )
+        tmppolars0 = tmppolars0tmp.filter((pl.col("KPIGroup").is_in(KPIGroupSelect))
+        )
+        dflpolarsfilterlist.append(tmppolars0)
+        dflpolarsfilterlistgroup.append(tmppolars0tmp)
+    dff = pl.concat(dflpolarsfilterlist, how ="diagonal")
+    dffgroup = pl.concat(dflpolarsfilterlistgroup, how ="diagonal")
+    dflpolarsgroup = dffgroup.select("KPIGroup").unique()
+    dffgroups = dflpolarsgroup.sort("KPIGroup")
+    return Serverside(dff),Serverside(dffgroups)
 """
 @app.callback(
     Output('top15compare', 'data', allow_duplicate=True),
