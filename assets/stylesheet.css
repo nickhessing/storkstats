@@ -81,7 +81,7 @@ background-color : var(--bodybackgroundcolor);
 .toggle-right {
 	position: fixed;
 	cursor: pointer;
-	top: 50%;
+	top: 51.5%;
 	right: 1px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
@@ -95,6 +95,7 @@ background-color : var(--bodybackgroundcolor);
 	font-size: 22px;
 	transition: var(--tran-05);
 }
+
 .close .toggle-right {
 	transform: translateX(-50%) translateY(50%) rotate(0deg);
 }
@@ -379,6 +380,7 @@ color:purple;
 	background-color: transparent;
 	padding-right:0px;
 	padding-left:0px;
+	overflow: hidden;
 }
 
 .trich_carousel .slick-prev {
@@ -386,6 +388,7 @@ color:purple;
 	font-weight: 900;
 	content: 'arrow_back_ios_new' !important;
 	opacity: 70%;
+	left:-15px;
 	color: var(--bulletcolor) !important;
   }
   
@@ -393,6 +396,7 @@ color:purple;
 	font-family: "Material Icons"!important;
 	font-weight: 900;
 	content: 'arrow_forward_ios_new' !important;
+	right:-15px;
 	opacity: 70%;
 	color: var(--bulletcolor) !important;
   }
@@ -434,8 +438,11 @@ scroll-snap-align: start;
 	opacity: 100%;
 	background-color: transparent;
 	}
-.slick-prev{background-color: transparent;}
-.slick-next{background-color: transparent;}
+.slick-prev{background-color: transparent;
+    left: -15px;}
+.slick-next{background-color: transparent;
+	right: -15px;
+}
 .slick-next:hover {
 	color: var(--bodycolor);
 	border-color: red;
@@ -1231,6 +1238,7 @@ border-color: red;
 	font-weight: 900;
 	content: 'arrow_back_ios_new';
 	opacity: 70%;
+	left:-15px;
 	color: var(--bodycolor);
 	background-color: transparent;
 
@@ -1239,6 +1247,7 @@ border-color: red;
 .trich_carousel .slick-next {
 	font-family: "Material Icons";
 	font-weight: 900;
+	right:-15px;
 	content: 'arrow_forward_ios_new';
 	opacity: 70%;
 	color: var(--bodycolor);
@@ -1294,7 +1303,7 @@ border-color: red;
 .toggle-right {
 	position: fixed;
 	cursor: pointer;
-	top: 50%;
+	top: 51.5%;
 	right: 12px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
@@ -1305,6 +1314,7 @@ border-color: red;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	opacity: .8;
 	font-size: 22px;
 	transition: var(--tran-05);
 }
@@ -1471,11 +1481,11 @@ header .image-text .profession {
 	width: 40px;
 	border-radius: 6px;
 }
-.sidebar header .toggle {
+.sidebar .toggle {
 	position: absolute;
 	top: 50%;
-	right: -25px;
-	transform: translateY(-50%) rotate(180deg);
+	right: -12px;
+	transform: rotate(180deg);
 	height: 25px;
 	width: 25px;
 	background-color: var(--primary-color);
@@ -1488,11 +1498,12 @@ header .image-text .profession {
 	cursor: pointer;
 	transition: var(--tran-05);
 }
-body.dark .sidebar header .toggle {
+body.dark .sidebar .toggle {
 	color: var(--text-color);
 }
 .sidebar.close .toggle {
-	transform: translateX(-50%) translateY(50%) rotate(0deg);
+	transform: rotate(0deg);
+	right: -30px;
 }
 
 .sidebar .menu {
@@ -1648,7 +1659,7 @@ border-color: red;
 	opacity: 70%;
 	color: var(--bodycolor);
 	background-color: transparent;
-
+	left:-15px;
   }
   
 .trich_carousel .slick-next {
@@ -1658,6 +1669,7 @@ border-color: red;
 	opacity: 70%;
 	color: var(--bodycolor);
 	background-color: transparent;
+	right:-15px;
   }
 
 .trich_carousel .slick-prev:before {
@@ -1707,7 +1719,7 @@ border-color: red;
 .toggle-right {
 	position: fixed;
 	cursor: pointer;
-	top: 50%;
+	top: 51.5%;
 	right: 12px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
@@ -1817,7 +1829,8 @@ border-color: red;
 }
 
 .sidebar.close .toggle {
-	transform: translateX(-50%) translateY(50%) rotate(0deg);
+	transform: rotate(0deg);
+	right: -14px;
 }
 
 
@@ -1889,10 +1902,10 @@ header .image-text .profession {
 	width: 40px;
 	border-radius: 6px;
 }
-.sidebar header .toggle {
+.sidebar .toggle {
 	position: absolute;
 	top: 50%;
-	right: -25px;
+	right: -12px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
 	width: 25px;
@@ -1906,11 +1919,11 @@ header .image-text .profession {
 	cursor: pointer;
 	transition: var(--tran-05);
 }
-body.dark .sidebar header .toggle {
+body.dark .sidebar .toggle {
 	color: var(--text-color);
 }
 .sidebar.close .toggle {
-	transform: translateX(-50%) translateY(50%) rotate(0deg);
+	transform: rotate(0deg);
 }
 .sidebar .menu {
 	margin-top: 3px;
@@ -2065,6 +2078,7 @@ border-color: red;
 	font-weight: 900;
 	content: 'arrow_back_ios_new';
 	opacity: 70%;
+	left:-15px;
 	color: var(--bodycolor);
 	background-color: transparent;
 
@@ -2075,6 +2089,7 @@ border-color: red;
 	font-weight: 900;
 	content: 'arrow_forward_ios_new';
 	opacity: 70%;
+	right:-15px;
 	color: var(--bodycolor);
 	background-color: transparent;
   }
@@ -2126,7 +2141,7 @@ border-color: red;
 .toggle-right {
 	position: fixed;
 	cursor: pointer;
-	top: 50%;
+	top: 51.5%;
 	right: 12px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
@@ -2238,7 +2253,7 @@ border-color: red;
 	padding: 0px;
 }
 .sidebar.close .toggle {
-	transform: translateX(-50%) translateY(50%) rotate(0deg);
+	transform: rotate(0deg);
 }
 
 
@@ -2310,10 +2325,10 @@ header .image-text .profession {
 	width: 40px;
 	border-radius: 6px;
 }
-.sidebar header .toggle {
+.sidebar .toggle {
 	position: absolute;
 	top: 50%;
-	right: -25px;
+	right: -12px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
 	width: 25px;
@@ -2327,7 +2342,7 @@ header .image-text .profession {
 	cursor: pointer;
 	transition: var(--tran-05);
 }
-body.dark .sidebar header .toggle {
+body.dark .sidebar .toggle {
 	color: var(--text-color);
 }
 
@@ -6405,7 +6420,7 @@ input[type="button"].btn-block {
 	flex-wrap: wrap;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+	list-style: none;
 }
 
 

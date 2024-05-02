@@ -1488,6 +1488,10 @@ tabscontainer = html.Div(
 
 app.layout = html.Div([
     html.Div([
+               # html.I("filter_alt",id='sweepl0filter',className="material-icons md-48"),
+                html.I("chevron_right",className='material-icons toggle-right',id='Opennavbar-right')
+            ]),
+    html.Div([
     dbc.Col([WalletSwitch], className="col-sm-12 col-md-12 col-lg-12 col-xl-12",style={'display': 'none'}),
     dbc.Button("Connect wallet", id="toggle-buttonn", className="mb-3 form-check-label btn btn-outline-primary active",style={'display': 'none'}),
     dbc.Modal(
@@ -1536,10 +1540,6 @@ app.layout = html.Div([
     dbc.Col(fade,className="col-sm-12 col-md-12 col-lg-2 col-xl-2",style={'display': 'none'}),
        ]),
     dbc.Row([
-            html.Div([
-            html.I("filter_alt",id='sweepl0filter',className="material-icons md-48"),
-            html.I("chevron_right",className='material-icons toggle-right',id='Opennavbar-right'),
-            ]),
             dbc.Col(
             [#html.Div(Perioddropdown,className="col-sm-2 col-md-2 col-lg-2 col-xl-2",style={'display': 'none'}),
             dls.Hash(html.Div([html.Div(className="col-sm-12 col-md-12 col-lg-9 col-xl-9 trich_carousel",style={"margin": '0 auto'},id='cardsid')
@@ -2889,11 +2889,12 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
             className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 trich_carousel',
             responsive=[
                 ],
-            )])])],[html.Nav([html.Header([
+            )])])],[html.Nav(
+                    [html.I("chevron_right",className='material-icons toggle',id='Opennavbar'),
+                     html.Header([
                         html.Div([
                         #    html.Div(Radiograin,className="col-sm-12 col-md-12 col-lg-12 col-xl-12 text logo-text")
                         ],className="image-text"),
-                        html.I("chevron_right",className='material-icons toggle',id='Opennavbar')
                         ]),
                         html.Div(
                             html.Img(
@@ -3976,11 +3977,11 @@ def toggle_modal(n1, n2, is_open):
     Output("modalfilter", "is_open"),
     [Input("Opennavbar-right", "n_clicks"), 
      Input("close-filter", "n_clicks"),
-     Input("sweepl0filter", "n_clicks"),
+    # Input("sweepl0filter", "n_clicks"),
      ],
     [State("modalfilter", "is_open")],prevent_initial_callback=True
 )
-def toggle_modal(n1, n2, n3, is_open):
+def toggle_modal(n1, n2, is_open):
     if n1 or n2 or n3:
         return not is_open
     return is_open
