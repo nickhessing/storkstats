@@ -1378,6 +1378,8 @@ tabs = html.Div([
                       ),
                       style={'overflow': 'auto'}
                       ),
+                    html.Div([html.I("play_circle",className="material-icons",n_clicks=0),
+                              html.Span("Create animation",className='text nav-text')],id='animation',style={'position':'relative','z-index': '1'}),
                     ]),
                       color=ProjectOrange,
                         speed_multiplier=2,
@@ -1391,8 +1393,6 @@ tabs = html.Div([
        #     label="Create nimation",
        # labelPosition="right",
        # )
-        html.Div([html.I("play_circle",className="material-icons",n_clicks=0),
-                                html.Span("Create animation",className='text nav-text')],id='animation',style={'position':'relative','z-index': '1'}),
         ],className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pretty_graph2"
         ),className="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 empty_tab2"
         ),
@@ -1507,10 +1507,6 @@ app.layout = html.Div([
         is_open=False,
     )
     ],style={'position':'fixed','top':'2%','right':'12px','z-index': '1','display': 'flex','flex-direction': 'column'}),
-    html.I("chevron_right",className='material-icons toggle-right',id='Opennavbar-right'),#html.I("filter_alt", id='dropdowncontrol', className="material-icons filtericon", n_clicks=0),
-    html.Div([
-        html.I("filter_alt",id='sweepl0filter',className="material-icons md-48"),
-    ],style={'position':'fixed','top':'44%','right':'12px','z-index': '1','display': 'flex','flex-direction': 'column'}),
     html.Div([
     ],id='sweepers',style={'position':'fixed','top':'52%','right':'12px','z-index': '1','display': 'flex','flex-direction': 'column'}),
     #dcc.Graph(id='animatedbar'),
@@ -1540,13 +1536,19 @@ app.layout = html.Div([
     dbc.Col(fade,className="col-sm-12 col-md-12 col-lg-2 col-xl-2",style={'display': 'none'}),
        ]),
     dbc.Row([
+            html.Div([
+            html.I("filter_alt",id='sweepl0filter',className="material-icons md-48"),
+            html.I("chevron_right",className='material-icons toggle-right',id='Opennavbar-right'),
+            ]),
             dbc.Col(
-            [html.Div(Perioddropdown,className="col-sm-2 col-md-2 col-lg-2 col-xl-2",style={'display': 'none'}),
-            dls.Hash(html.Div(className="col-sm-9 col-md-9 col-lg-9 col-xl-9",style={"margin": '0 auto'},id='cardsid')
-                        ,color=ProjectOrange,
+            [#html.Div(Perioddropdown,className="col-sm-2 col-md-2 col-lg-2 col-xl-2",style={'display': 'none'}),
+            dls.Hash(html.Div([html.Div(className="col-sm-12 col-md-12 col-lg-9 col-xl-9 trich_carousel",style={"margin": '0 auto'},id='cardsid')
+                        ,
+                     html.Div(id='container-ex3', children=[])
+                    ]),color=ProjectOrange,
                         speed_multiplier=2,
-                        size=100),
-            html.Div(id='container-ex3', children=[])
+                        size=100
+            )
             # html.Div(className="col-sm-9 col-md-9 col-lg-9 col-xl-9"
             #    ,style={"margin": '0 auto'},id='cardsid')
             ]),
@@ -2884,7 +2886,7 @@ def updatekpiindicator(dfgroups,dffcompare,KPISelect,KPIGroupSelect,widthBreakpo
            # variable_width=True,
             center_mode=False,
             id='slickthinky',
-            className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12',
+            className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 trich_carousel',
             responsive=[
                 ],
             )])])],[html.Nav([html.Header([

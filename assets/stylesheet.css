@@ -72,12 +72,17 @@ background-color : var(--bodybackgroundcolor);
 	color: var(--sidebar-color);
 	font-weight: bold;
 }
-
+#sweepl0filter {
+	position: fixed;
+	cursor: pointer;
+	top: 50%;
+	right: 1px;
+}
 .toggle-right {
 	position: fixed;
 	cursor: pointer;
 	top: 50%;
-	right: 12px;
+	right: 1px;
 	transform: translateY(-50%) rotate(180deg);
 	height: 25px;
 	width: 25px;
@@ -372,7 +377,8 @@ color:purple;
 
 .trich_carousel {
 	background-color: transparent;
-
+	padding-right:0px;
+	padding-left:0px;
 }
 
 .trich_carousel .slick-prev {
@@ -449,6 +455,7 @@ scroll-snap-align: start;
 	z-index: 60;
     background: linear-gradient(var(--cardboven),var(--cardonder));
     margin: 10px;
+	margin-bottom: 5px;
 }
 .carddiv:hover {
     text-decoration: none;
@@ -1156,9 +1163,9 @@ border-color: red;
 	padding-left: 0px;
 	padding-top: 15px;
 	padding-bottom: 45px;
+	overflow-x: hidden;
 	padding-right: 0px;
 	position: static;
-	overflow: auto;
   }
 .pretty_tab {
 	border-radius: 10px;
@@ -1563,6 +1570,7 @@ body.dark .sidebar header .toggle {
 		border-top-left-radius: 1px;
 		margin-left: 10px;
 		margin-top: 10px;
+		overflow-x: hidden;
 		margin-bottom: 10px;
 		margin-right: 10px;
 		padding-left: 3px;
@@ -1570,7 +1578,6 @@ body.dark .sidebar header .toggle {
 		padding-bottom: 45px;
 		padding-right: 3px;
 		position: static;
-		overflow: auto;
 	  }
 	.pretty_tab {
 		border-radius: 10px;
@@ -1617,7 +1624,7 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	margin-top: 30px;
+	margin-top: 0px;
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -1627,7 +1634,6 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -1988,9 +1994,9 @@ body.dark .sidebar header .toggle {
 		padding-left: 15px;
 		padding-top: 15px;
 		padding-bottom: 45px;
+		overflow-x: hidden;
 		padding-right: 15px;
 		position: static;
-		overflow: auto;
 	  }
 	.pretty_tab {
 		border-radius: 10px;
@@ -2036,7 +2042,7 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	margin-top: 30px;
+	margin-top: 0px;
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -2046,7 +2052,6 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -2444,7 +2449,7 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	margin-top: 30px;
+	margin-top: 0px;
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -2454,7 +2459,6 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -2513,7 +2517,7 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	margin-top:30px;
+	margin-top:0px;
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -2523,7 +2527,6 @@ body.dark .sidebar header .toggle {
 	background-color: var(--graphboven);
 	margin: 0px;
 	padding: 0px;
-	
 	position: relative;
 	box-shadow: 0px 0px 0px #0c2a4d;
   }
@@ -13050,7 +13053,9 @@ color: #D3D3D3;
 
 .pretty_graph {
   width: 100%;
-  padding: 15px;
+  padding: 0px;
+  padding-top: 15px;
+  padding-bottom: 10px;
   border-radius: 10px;
   background-color: var(-–graphboven);
   position: relative;
@@ -13059,7 +13064,9 @@ color: #D3D3D3;
 .pretty_graph2 {
   width: 100%;
   margin: 0px;
-  padding: 15px;
+  padding: 0px;
+  padding-top: 15px;
+  padding-bottom: 10px;
   border-radius: 10px;
   background-color: var(-–graphonder);
   position: relative;
