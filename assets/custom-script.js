@@ -198,3 +198,6 @@ function toggleAccordion() {
 }
 
 section.on('click', toggleAccordion);
+
+import { format } from "d3-format";
+text: format("$.2s")(12300000000).replace('G', 'B');
