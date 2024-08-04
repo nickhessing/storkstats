@@ -404,6 +404,14 @@ mainlogograph = html.Div(
         id='backgroundimage'
     ),
 )
+mainlogograph2 = html.Div(
+    html.Img(
+        src='data:image/png;base64,{}'.format(
+            base64.b64encode(open('assets/Attributes/Images/storkstats.png', 'rb').read()).decode()
+        ),
+        id='backgroundimage2'
+    ),
+)
 
 d_kpi_sorting = d_kpi
 
@@ -1278,7 +1286,7 @@ tabs = html.Div([
         #html.Div([button_group1],id='button_group11',style={'left':'0px','position':'relative'}),
         #dbc.Row([html.Div([button_group1],id='button_group11',style={'left':'0px','position':'absolute'})],style={'margin-bottom':'80px'},className="col-sm-12 col-md-12 col-lg-12 col-xl-12"),
         dbc.Col(html.Div([
-            html.Div([mainlogograph]),
+            html.Div([mainlogograph2]),
             #dls.Hash(#,spinner_class_name='loading'
             html.Div([
                 html.Div([html.I("settings_suggest",id='open-settings',className="material-icons",n_clicks=0),

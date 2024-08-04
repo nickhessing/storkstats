@@ -28,6 +28,15 @@ background-color : var(--bodybackgroundcolor);
 	height: 40px;
 	opacity: 60%;
 }
+#backgroundimage2 {
+	z-index: 10 !important;
+	position: absolute;
+	right:4%;
+	top:4%;
+	width: 40px;
+	height: 40px;
+	opacity: 60%;
+}
 
 #button_group {
 	background: linear-gradient(to top, var(--tabdeselect) 50%, transparent 50%, transparent 50%, transparent 100%);
